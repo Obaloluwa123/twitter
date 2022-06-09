@@ -47,14 +47,3 @@ public class Tweet {
     }
 }
 
-//    public static List<Tweet> fromJsonArray(JSONArray) {
-//        List<Tweet> tweets = new ArrayList<>();
-//
-//        for (int i = 0; i < JsonArray.length(); i++) {
-//            tweets.add(fromJson(jsonArray.getJSONObject(i)));
-//        }
-//
-//        return tweets;
-//    }
-
-
