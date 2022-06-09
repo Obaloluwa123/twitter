@@ -1,8 +1,10 @@
 package com.codepath.apps.restclienttemplate;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +43,27 @@ public class TimelineActivity extends AppCompatActivity {
 //        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
 //        startActivity(i);
 //    }
+
+    private final int REQUEST_CODE = 20;
+    private SwipeRefreshLayout swipeContainer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("rydgf", "gdjfjks");
+        Log.d("David", "gdjfjks");
         super.onCreate(savedInstanceState);
+
+        // Only ever call `setContentView` once right at the top
         setContentView(R.layout.activity_timeline);
 
+        // Lookup the swipe container view
+        swipeContainer = findViewById(R.id.swipeContainer);
+
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchTimelineAsync(0);
+            }
+        });
         client = TwitterApp.getRestClient(this);
 
         //find the recycler view
@@ -54,13 +72,16 @@ public class TimelineActivity extends AppCompatActivity {
         tweets = new ArrayList<>();
         adapter = new TweetsAdapter(this, tweets);
 
-
-
-
         //Recycler view setup: layout manager and the adapter
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         rvTweets.setAdapter(adapter);
         populateHomeTimeLine();
+    }
+
+    public void fetchTimelineAsync(int i){
+        adapter.clear();
+        populateHomeTimeLine();
+        swipeContainer.setRefreshing(false);
     }
 
 
@@ -76,20 +97,32 @@ public class TimelineActivity extends AppCompatActivity {
 
             //Navigate to the compose activity
             Intent intent = new Intent(this,ComposeActivity.class );
-            startActivity(intent);
+            startActivityForResult(intent, REQUEST_CODE);
             return true;
         }
         return super.onOptionsItemSelected(item);
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+            //Get data from the intent (tweet)
+            Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
+            //Update the RV with the tweet
+            //Modify data source of tweets
+            tweets.add(0, tweet);
+            //Update the adapter
+            adapter.notifyItemInserted(0);
+            rvTweets.smoothScrollToPosition(0);
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     private void populateHomeTimeLine() {
         client.getHomeTimeline(new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Headers headers, JSON json) {
-
-
 
                 Log.i(TAG, "onSuccess!" + json.toString());
                 JSONArray jsonArray = json.jsonArray;

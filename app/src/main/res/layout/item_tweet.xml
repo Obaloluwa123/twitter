@@ -35,4 +35,16 @@
         android:layout_marginTop="29dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="Hello Twitter!" />
+
+    <ImageView
+        android:id="@+id/rvImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignStart="@+id/tvBody"
+        android:layout_alignEnd="@+id/tvBody"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="-52dp"
+        tools:srcCompat="@tools:sample/avatars" />
 </RelativeLayout>

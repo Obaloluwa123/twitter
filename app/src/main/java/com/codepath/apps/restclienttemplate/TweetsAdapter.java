@@ -18,6 +18,16 @@ import java.util.List;
 public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder>{
 
 
+    public void clear() {
+        tweets.clear();
+        notifyDataSetChanged();
+    }
+    public void addAll(List<Tweet> list) {
+        tweets.addAll(list);
+        notifyDataSetChanged();
+    }
+
+
     Context context;
     List<Tweet> tweets;
 
@@ -68,23 +78,21 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         ImageView ivProfileImage;
         TextView tvScreenName;
         TextView tvBody;
+        ImageView ivBodyImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivProfileImage = itemView.findViewById(R.id.ivProfileImage);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvScreenName = itemView.findViewById(R.id.tvScreenName);
-
-
+            ivBodyImage = itemView.findViewById(R.id.rvImage);
         }
 
         public void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
             Glide.with(context).load(tweet.user.profileImageUrl).into(ivProfileImage);
-
-
-
+            Glide.with(context).load(tweet.mediaUrl).into(ivBodyImage);
         }
     }
 }
