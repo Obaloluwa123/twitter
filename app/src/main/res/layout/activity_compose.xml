@@ -18,37 +18,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:gravity="start|top"
-            android:inputType="textMultiLine"
-            android:minLines="5"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
             android:ems="10"
-            android:hint="What's Happening?" />
+            android:gravity="start|top"
+            android:hint="What's Happening?"
+            android:inputType="textMultiLine"
+            android:minLines="5" />
     </com.google.android.material.textfield.TextInputLayout>
-
-<!--    <com.google.android.material.textfield.TextInputLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:counterEnabled="true"-->
-<!--        app:counterMaxLength="10"></com.google.android.material.textfield.TextInputLayout>-->
-
-<!--    <EditText-->
-<!--        -->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="5dp"-->
-<!--        android:layout_marginTop="5dp"-->
-<!--        android:ems="10"-->
-<!--        android:gravity="start|top"-->
-<!--        android:hint="what's happening?"-->
-<!--        android:inputType="textMultiLine"-->
-<!--        android:minLines="5"-->
-<!--        app:counterEnabled = "true"-->
-<!--        app:CounterMaxLength = "200"-->
-<!--        />-->
 
 
     <Button

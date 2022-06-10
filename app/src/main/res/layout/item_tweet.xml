@@ -13,16 +13,16 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="20dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvScreenName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignTop="@+id/ivProfileImage"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="David1234" />
 
@@ -30,9 +30,9 @@
         android:id="@+id/tvBody"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/tvScreenName"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="6dp"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="Hello Twitter!" />
 
@@ -47,4 +47,18 @@
         android:layout_marginTop="7dp"
         android:layout_marginEnd="-52dp"
         tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/rTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvScreenName"
+        android:layout_alignBottom="@+id/tvScreenName"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="179dp"
+        android:layout_marginBottom="-1dp"
+        android:layout_toEndOf="@+id/tvScreenName"
+        android:text="timeStamp" />
 </RelativeLayout>
