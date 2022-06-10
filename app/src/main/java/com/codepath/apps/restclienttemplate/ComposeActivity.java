@@ -26,10 +26,7 @@ public class ComposeActivity extends AppCompatActivity {
     public static final int MAX_TWEET_LENGTH = 140;
     EditText etCompose;
     Button btnTweet;
-
     TwitterClient client;
-
-
 
 
     @Override
@@ -41,8 +38,6 @@ public class ComposeActivity extends AppCompatActivity {
 
         etCompose = findViewById(R.id.etCompose);
         btnTweet = findViewById(R.id.btnTweet);
-
-        //Set a click listener on button
         btnTweet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,12 +51,10 @@ public class ComposeActivity extends AppCompatActivity {
                     Toast.makeText(ComposeActivity.this, "Sorry your tweet is too long", Toast.LENGTH_LONG).show();
                     return;
 
-
                 }
                 Toast.makeText(ComposeActivity.this, "tweet", Toast.LENGTH_LONG).show();
 
                 //Make an API call to Twitter to publish the tweet
-
                 client.publishTweet(tweetContent, new JsonHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Headers headers, JSON json) {
@@ -71,12 +64,8 @@ public class ComposeActivity extends AppCompatActivity {
                             Log.i(TAG, "Published tweet says: " + tweet);
                             Intent intent = new Intent();
                             intent.putExtra("tweet", Parcels.wrap(tweet));
-
-                            //set result code and bundle data for response
                             setResult(RESULT_OK, intent);
-                            //close the activity, pass data to parent
                             finish();
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

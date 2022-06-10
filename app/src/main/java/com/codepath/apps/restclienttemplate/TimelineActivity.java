@@ -38,13 +38,10 @@ public class TimelineActivity extends AppCompatActivity {
     TweetsAdapter adapter;
 
     public void onLogoutButton(View v) {
-        // forget who's logged in
         TwitterApp.getRestClient(this).clearAccessToken();
-
-        //navigate backwards to Login screen
         Intent i = new Intent(this, LoginActivity.class);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // this makes sure the Back button won't work
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // same as above
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(i);
     }
 
@@ -57,10 +54,7 @@ public class TimelineActivity extends AppCompatActivity {
         Log.d("David", "gdjfjks");
         super.onCreate(savedInstanceState);
 
-        // Only ever call `setContentView` once right at the top
         setContentView(R.layout.activity_timeline);
-
-        // Lookup the swipe container view
         swipeContainer = findViewById(R.id.swipeContainer);
 
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -71,13 +65,9 @@ public class TimelineActivity extends AppCompatActivity {
         });
         client = TwitterApp.getRestClient(this);
 
-        //find the recycler view
         rvTweets = findViewById(R.id.rvTweets);
-        //Init the list of tweets and adapter
         tweets = new ArrayList<>();
         adapter = new TweetsAdapter(this, tweets);
-
-        //Recycler view setup: layout manager and the adapter
         rvTweets.setLayoutManager(new LinearLayoutManager(this));
         rvTweets.setAdapter(adapter);
         populateHomeTimeLine();
@@ -99,8 +89,6 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.compose) {
-
-            //Navigate to the compose activity
             Intent intent = new Intent(this,ComposeActivity.class );
             startActivityForResult(intent, REQUEST_CODE);
             return true;
@@ -149,12 +137,8 @@ public class TimelineActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-            //Get data from the intent (tweet)
             Tweet tweet = Parcels.unwrap(data.getParcelableExtra("tweet"));
-            //Update the RV with the tweet
-            //Modify data source of tweets
             tweets.add(0, tweet);
-            //Update the adapter
             adapter.notifyItemInserted(0);
             rvTweets.smoothScrollToPosition(0);
         }
