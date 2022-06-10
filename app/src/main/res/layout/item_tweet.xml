@@ -6,6 +6,18 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_alignBottom="@+id/ivProfileImage"
+        android:layout_marginStart="103dp"
+        android:layout_marginTop="186dp"
+        android:layout_marginBottom="-178dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        app:srcCompat="@drawable/ic_vector_heart" />
+
     <ImageView
         android:id="@+id/ivProfileImage"
         android:layout_width="50dp"
@@ -61,4 +73,25 @@
         android:layout_marginBottom="-1dp"
         android:layout_toEndOf="@+id/tvScreenName"
         android:text="timeStamp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="185dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        app:srcCompat="@drawable/ic_vector_retweet" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="46dp"
+        android:layout_height="41dp"
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_marginStart="182dp"
+        android:layout_marginTop="187dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        app:srcCompat="@android:drawable/ic_menu_set_as" />
+
 </RelativeLayout>

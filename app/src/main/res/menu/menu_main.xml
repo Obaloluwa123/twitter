@@ -2,11 +2,12 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">>
 
+
     <item
         android:id="@+id/compose"
-        android:icon="@android:drawable/ic_menu_edit"
-        android:title="compose"
+        android:icon="@drawable/vector_compose_fab"
         android:orderInCategory="80"
+        android:title="compose"
         app:showAsAction="always" />
 
 </menu>
