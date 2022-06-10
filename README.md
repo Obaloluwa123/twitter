@@ -56,7 +56,9 @@ GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Describe any challenges encountered while building the app:
+ I encountered few syntax error and problem with tweet not showing on my timeline activity, but it was resolved.
+ I was confused about which code goes to which activity.
 
 ## Open-source libraries used
 
