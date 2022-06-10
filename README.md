@@ -49,6 +49,9 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='http://Screen-Recording-2022-06-10-at-2.15.37-PM.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+`TODO://``Screen-Recording-2022-06-10-at-2.15.37-PM.gif`. 
+
+<img src="Screen-Recording-2022-06-10-at-2.15.37-PM.gif" width=250><br>
 
 GIF created with [Kap](https://getkap.co/).
 
