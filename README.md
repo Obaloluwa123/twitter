@@ -48,13 +48,17 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://Twitter.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<img src="Twitter.gif" width=250><br>
 
 GIF created with [Kap](https://getkap.co/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Describe any challenges encountered while building the app:
+ I encountered few syntax error and problem with tweet not showing on my timeline activity, but it was resolved.
+ I was confused about which code goes to which activity.
 
 ## Open-source libraries used
 
